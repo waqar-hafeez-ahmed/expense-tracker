@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./ExpenseForm.css";
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState("");
   //   // when we read value from event, it will be a string, so we will set initial value as string.
   const [enteredAmount, setEnteredAmont] = useState("");
@@ -38,16 +38,17 @@ const ExpenseForm = () => {
     // to prevent page reload.
     event.preventDefault();
 
-    const expenseDate = {
+    const expenseData = {
       title: enteredTitle,
       amount: enteredAmount,
       date: new Date(enteredDate),
     };
+    // We have executed the fuction, that we have created in the parent and passed the data as a parameter.
+    props.onSaveExpenseData(expenseData);
     // we added value attribute in input for the two way binding, it will reset the form once we have submit the from.
     setEnteredTitle("");
     setEnteredAmont("");
     setEnteredDate("");
-    console.log(expenseDate);
   };
 
   //   browser give a default event when the submit button is click, it submits the form.
