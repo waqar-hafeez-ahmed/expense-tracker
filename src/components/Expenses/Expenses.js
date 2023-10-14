@@ -4,6 +4,7 @@ import "./Expenses.css";
 import Card from "../UI/Card";
 import ExpensesFilter from "../NewExpense/ExpenseFilter";
 import ExpensesList from "./ExpensesList";
+import ExpensesChart from "./ExpensesChart";
 
 const Expenses = (props) => {
   const [filter, setFilter] = useState("2020");
@@ -36,7 +37,7 @@ const Expenses = (props) => {
           selected={filter}
           onFilterChange={onFilterChangedHandler}
         />
-
+        <ExpensesChart expenses={filteredExpenses} />
         <ExpensesList item={filteredExpenses} />
         {/* We render expense content conditionally. Thought we could have used ternary operator or && also.
 
